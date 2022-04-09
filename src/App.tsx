@@ -1,25 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import FetchingData from "./getData";
 import './App.css';
+ 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <title>Weather and Moods</title>
+      <p className="pageTitle">Weather And Moods</p>
+      <img src={require('./assets/Sun.png')} alt=" "  className="mainImage"/> 
+      <FetchingData />
+    </>
   );
 }
 

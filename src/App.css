@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+body {
+    background: linear-gradient(90deg, #7474bf 10%, #348ac7 90%);
+    background-size: cover;
+    background-repeat: repeat-y;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  #dataFromAPI {
+    padding: 25px;
+    margin: 0 auto !important;
+    margin-top: 35px;
+    width: 67%;
+    min-height: 200px;
+    color: #f2f2f2;
+    border-radius: 25px;
+    border-style: groove;
+    border-color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 5px rgb(62, 62, 63);
+    font-family: Montserrat;
+    text-align: center;
+    white-space: pre-wrap;
+    font-size: 50px;
   }
-  to {
-    transform: rotate(360deg);
+
+   .mainImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: auto;
+    width: 350px;
+    height: 350px;
+    -moz-animation: spin 8s linear infinite;
+    animation: spin 8s linear infinite;
   }
-}
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  .pageTitle {
+    white-space: pre-wrap;
+    text-shadow: 2px 2px 5px rgb(62, 62, 63);
+    color: white;
+    font-family: Montserrat;
+    font-size: 75px;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
