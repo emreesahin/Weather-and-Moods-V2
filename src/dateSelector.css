@@ -1,0 +1,121 @@
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+.getMoodButton {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border-radius: 25px;
+    border-color: #488FB1;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    width: 150px;
+    padding: auto;
+    margin-left: 45.9%;
+    margin-top: 25px;
+    
+  }
+  
+  .getMoodButton:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  }
+  
+  .getMoodButton:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .getMoodButton:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+
+
+  .mainContainer {
+    color: #f2f2f2;
+    border-radius: 25px;
+    border-style: groove;
+    border-color: #488FB1;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 5px rgb(62, 62, 63);
+    height: 250px;
+  }
+
+  .dateSection {
+    font-size: 35px;
+    width: 150px;
+    padding: auto;
+    margin-left: 47.7%;
+    margin-top: 125px;
+    
+  }
+
+
+.dateSectionBox {
+  font-family: Montserrat;
+  color: #333;
+  font-size: 1.2rem;
+  padding: auto;
+  margin-left: 44.9%;
+  margin-top: 1px;
+
+  border-radius: 0.2rem;
+  background-color: #ECECEC;
+  border: none;
+  width: 10%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.timeSection {
+    font-size: 35px;
+    width: 150px;
+    padding: auto;
+    margin-left: 47.7%;
+}
+
+.timeSelectBox {
+    font-family: Montserrat;
+    color: #333;
+    font-size: 1.2rem;
+    padding: auto;
+    margin-left: 44.9%;
+    margin-top: 1px;
+  
+    border-radius: 0.2rem;
+    background-color: #ECECEC;
+    border: none;
+    width: 10%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+
+.dateValue {
+    font-size: 35px;
+    width: 300px;
+    padding: auto;
+    margin-left: 42.7%;
+}

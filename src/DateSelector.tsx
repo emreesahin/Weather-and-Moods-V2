@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import "./dateSelector.css";
 import dataServices from "./dataServices";
+import { DataTypes } from "./types";
 
 function DateSelector() {
   const [time, setTime] = useState<any>();
@@ -18,43 +20,47 @@ function DateSelector() {
     });
   }, [dataServices]);
 
-  let degree = 0;
-
+  let degree: number = 0;
   const getWeather = () => {
     let index =
       times && time
         ? times.time.findIndex((time: any) => time === fullTime())
         : null;
-    degree = times.temperature_2m[index];
+    console.log(times.temperature_2m[index]);
+
     return index ? times.temperature_2m[index] : null;
   };
-
-  function getMood() {
+  const getMood = () => {
     if (degree < 10) {
-      return "Sick";
+      return alert("Sick");
     } else if (degree < 15) {
-      return "Bored";
+      return alert("Bored");
     } else if (degree < 25) {
-      return "Cheerfull";
+      return alert("Cheerfull");
     } else {
-      return "Angry";
+      return alert("Angry");
     }
-  }
+  };
 
   return (
-    <div>
-      <label htmlFor="Date">
-        Date
+    <div className="mainContainer">
+      <label className="dateSection" htmlFor="Date">
+        DATE
         <input
+          className="dateSectionBox"
           id="date"
           placeholder="yyyy-mm-dd"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
       </label>
-      <label htmlFor="time">
-        Time
-        <select value={time} onChange={(e) => setTime(e.target.value)}>
+      <label htmlFor="time" className="timeSection">
+        TIME
+        <select
+          className="timeSelectBox"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        >
           <option value="00:00">00.00</option>
           <option value="01:00">01.00</option>
           <option value="02:00">02.00</option>
@@ -80,14 +86,15 @@ function DateSelector() {
           <option value="22:00">22.00</option>
           <option value="23:00">23.00</option>
         </select>
-        <p>
+        <p className="dateValue">
           {date}T{time}
           <br />
-          {getWeather()}
-          <br />
-          <button onClick={getMood}>Get Mood</button>
+          {getWeather}
         </p>
       </label>
+      <button className="getMoodButton" onClick={getMood}>
+        Get Mood
+      </button>
     </div>
   );
 }
