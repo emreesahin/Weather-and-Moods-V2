@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
-import "./dateSelector.css";
 import dataServices from "./dataServices";
-import { DataTypes } from "./types";
 
 function DateSelector() {
+  const d = new Date();
+  let dateDay: number | string = d.getDate();
+  dateDay = dateDay < 10 ? "0" + dateDay : dateDay;
+  let dateMonth: number | string = d.getMonth();
+  dateMonth = dateMonth < 10 ? "0" + dateMonth : dateMonth;
+  let dateYear: number = d.getFullYear();
+  let initialDate = dateYear + "-" + dateMonth + "-" + dateDay;
+
   const [time, setTime] = useState<any>();
-  const [date, setDate] = useState<any>();
+  const [date, setDate] = useState<any>(initialDate);
   const [times, setTimes] = useState<any>();
 
   const fullTime = () => {
@@ -19,33 +25,33 @@ function DateSelector() {
       setTimes(response.data.hourly);
     });
   }, [dataServices]);
-
   let degree: number = 0;
-  const getWeather = () => {
-    let index =
-      times && time
-        ? times.time.findIndex((time: any) => time === fullTime())
-        : null;
-    console.log(times.temperature_2m[index]);
 
+  const getWeather2 = () => {
+    let index = times.time.findIndex((time: any) => time === fullTime());
+    console.log(times.temperature_2m[index]);
+    degree = times.temperature_2m[index];
     return index ? times.temperature_2m[index] : null;
   };
+
   const getMood = () => {
     if (degree < 10) {
-      return alert("Sick");
+      return alert("Temperature is: " + getWeather2() + "\n" + "Mood: Sick");
     } else if (degree < 15) {
-      return alert("Bored");
+      return alert("Temperature is: " + getWeather2() + "\n" + "Mood: Bored");
     } else if (degree < 25) {
-      return alert("Cheerfull");
+      return alert(
+        "Temperature is: " + getWeather2() + "\n" + "Mood: Cheerfull"
+      );
     } else {
-      return alert("Angry");
+      return alert("Temperature is: " + getWeather2() + "\n" + "Mood: Angry");
     }
   };
 
   return (
     <div className="mainContainer">
       <label className="dateSection" htmlFor="Date">
-        DATE
+        Date
         <input
           className="dateSectionBox"
           id="date"
@@ -54,8 +60,8 @@ function DateSelector() {
           onChange={(e) => setDate(e.target.value)}
         />
       </label>
-      <label htmlFor="time" className="timeSection">
-        TIME
+      <label className="timeSection" htmlFor="time">
+        Time
         <select
           className="timeSelectBox"
           value={time}
@@ -86,11 +92,6 @@ function DateSelector() {
           <option value="22:00">22.00</option>
           <option value="23:00">23.00</option>
         </select>
-        <p className="dateValue">
-          {date}T{time}
-          <br />
-          {getWeather}
-        </p>
       </label>
       <button className="getMoodButton" onClick={getMood}>
         Get Mood
