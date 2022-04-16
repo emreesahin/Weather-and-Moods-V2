@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import dataServices from "./dataServices";
+import React from "react";
+import ReactDOM from "react-dom";
 
 function DateSelector() {
   const d = new Date();
@@ -29,27 +31,46 @@ function DateSelector() {
 
   const getWeather2 = () => {
     let index = times.time.findIndex((time: any) => time === fullTime());
-    console.log(times.temperature_2m[index]);
     degree = times.temperature_2m[index];
     return index ? times.temperature_2m[index] : null;
   };
 
+  let Mood = "";
+  let css = "";
   const getMood = () => {
+    getWeather2();
     if (degree < 10) {
-      return alert("Temperature is: " + getWeather2() + "\n" + "Mood: Sick");
-    } else if (degree < 15) {
-      return alert("Temperature is: " + getWeather2() + "\n" + "Mood: Bored");
-    } else if (degree < 25) {
-      return alert(
-        "Temperature is: " + getWeather2() + "\n" + "Mood: Cheerfull"
-      );
+      css = "moodSick";
+      Mood = "Mood: Sick 🤒";
+    } else if (degree < 20) {
+      css = "moodLow";
+      Mood = "Mood: Low 😞";
+    } else if (degree < 30) {
+      css = "moodHappy";
+      Mood = "Mood: Happy 😉";
     } else {
-      return alert("Temperature is: " + getWeather2() + "\n" + "Mood: Angry");
+      css = "moodAngry";
+      Mood = "Mood: Angry 😡";
     }
+    return ReactDOM.render(
+      <div className="moodContainer">
+        <img
+          src={require("./assets/weather.png")}
+          alt=" "
+          className="resultPageImage"
+        />
+        <hr />
+        <p className={css}>
+          {Mood} <br /> Degree: {getWeather2()} °C
+        </p>
+      </div>,
+      document.getElementById("root")
+    );
   };
 
   return (
     <div className="mainContainer">
+      <div id="root"></div>
       <label className="dateSection" htmlFor="Date">
         Date
         <input

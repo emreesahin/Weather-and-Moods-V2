@@ -119,3 +119,69 @@
     padding: auto;
     margin-left: 42.7%;
 }
+
+.moodSick {
+  font-family: Montserrat;
+  color: rgb(250, 250, 250);
+  font-size: 2.2rem;
+  padding: auto;
+  margin-left: 10.9%;
+  margin-top: 40px;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.moodLow {
+  font-family: Montserrat;
+  color: rgb(250, 250, 250);
+  font-size: 2.2rem;
+  padding: auto;
+  margin-left: 10.9%;
+  margin-top: 40px;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.moodHappy {
+  font-family: Montserrat;
+  color: rgb(250, 250, 250);
+  font-size: 2.2rem;
+  padding: auto;
+  margin-left: 10.9%;
+  margin-top: 40px;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.moodAngry {
+  font-family: Montserrat;
+  color: rgb(250, 250, 250);
+  font-size: 2.2rem;
+  padding: auto;
+  margin-left: 10.9%;
+  margin-top: 40px;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.moodContainer {
+  color: #f2f2f2;
+  border-radius: 25px;
+  border-style: groove;
+  border-color: #488FB1;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 5px rgb(62, 62, 63);
+  height: 450px;
+  width: 350px;
+  margin-left: 39% ;
+  margin-top: 7%;
+}
+
+.resultPageImage {
+  height: 55%;
+  margin-left: 55px
+}
