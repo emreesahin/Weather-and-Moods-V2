@@ -1,9 +1,20 @@
 import { useState, useEffect } from "react";
 import dataServices from "./dataServices";
+import React from "react";
+import ReactDOM from "react-dom";
 
 function DateSelector() {
+  const d = new Date();
+  let dateDay: number | string = d.getDate();
+  dateDay = dateDay < 10 ? "0" + dateDay : dateDay;
+  let dateMonth: number | string = d.getMonth();
+  dateMonth = dateMonth < 10 ? "0" + dateMonth : dateMonth;
+  let dateYear: number = d.getFullYear();
+  let initialDate = dateYear + "-" + dateMonth + "-" + dateDay;
+  console.log(dateDay);
+
   const [time, setTime] = useState<any>();
-  const [date, setDate] = useState<any>();
+  const [date, setDate] = useState<any>(initialDate);
   const [times, setTimes] = useState<any>();
 
   const fullTime = () => {
@@ -17,44 +28,67 @@ function DateSelector() {
       setTimes(response.data.hourly);
     });
   }, [dataServices]);
+  let degree: number = 0;
 
-  let degree = 0;
-
-  const getWeather = () => {
-    let index =
-      times && time
-        ? times.time.findIndex((time: any) => time === fullTime())
-        : null;
+  const getWeather2 = () => {
+    let index = times.time.findIndex((time: any) => time === fullTime());
     degree = times.temperature_2m[index];
     return index ? times.temperature_2m[index] : null;
   };
 
-  function getMood() {
+  let Mood = "";
+  let css = "";
+  const getMood = () => {
+    getWeather2();
     if (degree < 10) {
-      return "Sick";
-    } else if (degree < 15) {
-      return "Bored";
-    } else if (degree < 25) {
-      return "Cheerfull";
+      css = "moodSick";
+      Mood = "Mood: Sick 🤒";
+    } else if (degree < 20) {
+      css = "moodLow";
+      Mood = "Mood: Low 😞";
+    } else if (degree < 30) {
+      css = "moodHappy";
+      Mood = "Mood: Happy 😉";
     } else {
-      return "Angry";
+      css = "moodAngry";
+      Mood = "Mood: Angry 😡";
     }
-  }
+    return ReactDOM.render(
+      <div className="moodContainer">
+        <img
+          src={require("./assets/weather.png")}
+          alt=" "
+          className="resultPageImage"
+        />
+        <hr />
+        <p className={css}>
+          {Mood} <br /> Degree: {getWeather2()} °C
+        </p>
+      </div>,
+      document.getElementById("root")
+    );
+  };
 
   return (
-    <div>
-      <label htmlFor="Date">
+    <div className="mainContainer">
+      <div id="root"></div>
+      <label className="dateSection" htmlFor="Date">
         Date
         <input
+          className="dateSectionBox"
           id="date"
           placeholder="yyyy-mm-dd"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
       </label>
-      <label htmlFor="time">
+      <label className="timeSection" htmlFor="time">
         Time
-        <select value={time} onChange={(e) => setTime(e.target.value)}>
+        <select
+          className="timeSelectBox"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        >
           <option value="00:00">00.00</option>
           <option value="01:00">01.00</option>
           <option value="02:00">02.00</option>
@@ -80,14 +114,10 @@ function DateSelector() {
           <option value="22:00">22.00</option>
           <option value="23:00">23.00</option>
         </select>
-        <p>
-          {date}T{time}
-          <br />
-          {getWeather()}
-          <br />
-          <button onClick={getMood}>Get Mood</button>
-        </p>
       </label>
+      <button className="getMoodButton" onClick={getMood}>
+        Get Mood
+      </button>
     </div>
   );
 }

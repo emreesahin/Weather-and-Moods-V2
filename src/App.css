@@ -1,26 +1,11 @@
+@import "./dateSelector.css";
+
+
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 body {
     background: linear-gradient(90deg, #7474bf 10%, #348ac7 90%);
     background-size: cover;
     background-repeat: repeat-y;
-  }
-
-  #dataFromAPI {
-    padding: 25px;
-    margin: 0 auto !important;
-    margin-top: 35px;
-    width: 67%;
-    min-height: 200px;
-    color: #f2f2f2;
-    border-radius: 25px;
-    border-style: groove;
-    border-color: #f2f2f2;
-    background-color: rgba(0, 0, 0, 0.2);
-    text-shadow: 2px 2px 5px rgb(62, 62, 63);
-    font-family: Montserrat;
-    text-align: center;
-    white-space: pre-wrap;
-    font-size: 50px;
   }
 
    .mainImage {
@@ -59,5 +44,8 @@ body {
     text-align: center;
     margin-top: 35px;
     margin-bottom: 35px;
-  }
   
+  }
+
+  
+ 
