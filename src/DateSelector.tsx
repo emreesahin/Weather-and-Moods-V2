@@ -11,6 +11,7 @@ function DateSelector() {
   dateMonth = dateMonth < 10 ? "0" + dateMonth : dateMonth;
   let dateYear: number = d.getFullYear();
   let initialDate = dateYear + "-" + dateMonth + "-" + dateDay;
+  console.log(dateDay);
 
   const [time, setTime] = useState<any>();
   const [date, setDate] = useState<any>(initialDate);
